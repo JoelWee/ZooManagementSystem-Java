@@ -14,8 +14,13 @@ public class GuineaFowl extends AbstractAnimal implements LargeAnimal, CanBeGroo
     }
 
     @Override
+    public void setLastGroomed(LocalDateTime lastGroomed) {
+        this.lastGroomed = lastGroomed;
+    }
+
+    @Override
     public void groom() {
-        lastGroomed = LocalDateTime.now();
+        CanBeGroomed.defaultGroom(this);
     }
 
     @Override

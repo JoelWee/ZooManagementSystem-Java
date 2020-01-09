@@ -19,8 +19,13 @@ public class Rabbit extends AbstractAnimal implements SmallAnimal, CanBeGroomed 
     }
 
     @Override
+    public void setLastGroomed(LocalDateTime lastGroomed) {
+        this.lastGroomed = lastGroomed;
+    }
+
+    @Override
     public void groom() {
-        lastGroomed = LocalDateTime.now();
+        CanBeGroomed.defaultGroom(this);
     }
 
     @Override
