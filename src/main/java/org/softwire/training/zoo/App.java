@@ -1,12 +1,6 @@
 package org.softwire.training.zoo;
 
-import org.softwire.training.zoo.models.Animal;
-import org.softwire.training.zoo.models.Keeper;
-import org.softwire.training.zoo.models.LargeAnimal;
-import org.softwire.training.zoo.models.Lion;
-import org.softwire.training.zoo.models.Rabbit;
-import org.softwire.training.zoo.models.SmallAnimal;
-import org.softwire.training.zoo.models.Zebra;
+import org.softwire.training.zoo.models.*;
 import org.softwire.training.zoo.services.FeedingScheduler;
 import org.softwire.training.zoo.services.GroomingScheduler;
 
@@ -21,7 +15,8 @@ public class App {
         List<LargeAnimal> largeAnimals = Arrays.asList(
                 new Lion(LocalDate.of(2010, 4, 28)),
                 new Lion(LocalDate.of(2012, 5, 11)),
-                new Zebra(LocalDate.of(2008, 12, 1))
+                new Zebra(LocalDate.of(2008, 12, 1)),
+                new GuineaFowl(LocalDate.of(2020, 1, 1))
         );
         List<SmallAnimal> smallAnimals = Collections.singletonList(
                 new Rabbit(LocalDate.of(2014, 1, 1))
