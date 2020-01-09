@@ -3,6 +3,8 @@ package org.softwire.training.zoo;
 import org.softwire.training.zoo.models.*;
 import org.softwire.training.zoo.services.FeedingScheduler;
 import org.softwire.training.zoo.services.GroomingScheduler;
+import org.softwire.training.zoo.services.MuckSweepScheduler;
+import org.softwire.training.zoo.services.Scheduler;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -33,11 +35,13 @@ public class App {
         Rabbit babyRabbit = new Rabbit(LocalDate.now());
         smallAnimalKeeper.startLookingAfter(babyRabbit);
 
-        FeedingScheduler feedingScheduler = FeedingScheduler.getInstance();
-        GroomingScheduler groomingScheduler = GroomingScheduler.getInstance();
+        List<Scheduler> schedulers = Arrays.asList(
+                FeedingScheduler.getInstance(),
+                GroomingScheduler.getInstance(),
+                MuckSweepScheduler.getInstance()
+        );
 
-        feedingScheduler.assignFeedingJobs(keepers);
-        groomingScheduler.assignGroomingJobs(keepers);
+        schedulers.forEach(s -> s.assignJobs(keepers));
         animals.forEach(System.out::println);
     }
 }

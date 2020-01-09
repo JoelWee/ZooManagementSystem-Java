@@ -2,27 +2,28 @@ package org.softwire.training.zoo.services;
 
 import org.softwire.training.zoo.models.Animal;
 import org.softwire.training.zoo.models.CanBeGroomed;
+import org.softwire.training.zoo.models.CanHaveMuckSweptOut;
 import org.softwire.training.zoo.models.Keeper;
 
 import java.util.List;
 
-public class GroomingScheduler implements Scheduler {
-    private static GroomingScheduler instance;
+public class MuckSweepScheduler implements Scheduler {
+    private static MuckSweepScheduler instance;
 
-    private GroomingScheduler() {
+    private MuckSweepScheduler() {
     }
 
-    public static GroomingScheduler getInstance() {
+    public static MuckSweepScheduler getInstance() {
         if (instance == null) {
-            instance = new GroomingScheduler();
+            instance = new MuckSweepScheduler();
         }
         return instance;
     }
 
     public void assignJobs(List<Keeper<? extends Animal>> keepers) {
         keepers.forEach(keeper -> keeper.getResponsibleAnimals().forEach(animal -> {
-            if (animal instanceof CanBeGroomed) {
-                keeper.groom((CanBeGroomed) animal);
+            if (animal instanceof CanHaveMuckSweptOut) {
+                keeper.sweepMuck((CanHaveMuckSweptOut) animal);
             }
         }));
     }
